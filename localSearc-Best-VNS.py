@@ -1,6 +1,4 @@
-#hill climbing search
-#ISE 5113 HW 4
-#Andrew Duffle, Edward Ellsworth, & Ana Santiago
+
 
 #need some python libraries
 import copy
