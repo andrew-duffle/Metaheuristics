@@ -1,5 +1,6 @@
 #hill climbing search
-
+#ISE 5113 HW 4
+#Andrew Duffle, Edward Ellsworth, & Ana Santiago
 
 #need some python libraries
 import copy
@@ -10,11 +11,6 @@ import numpy as np
 #to setup a random number generator, we will specify a "seed" value
 seed = 12345
 myPRNG = Random(seed)
-
-#to get a random number between 0 and 1, write call this:             myPRNG.random()
-#to get a random number between lwrBnd and upprBnd, write call this:  myPRNG.uniform(lwrBnd,upprBnd)
-#to get a random integer between lwrBnd and upprBnd, write call this: myPRNG.randint(lwrBnd,upprBnd)
-
 
 #number of elements in a solution
 n = 100
@@ -86,8 +82,7 @@ for r in xrange (0,restarts):
     x_curr = [] #x_curr will hold the current solution 
     
     #f_curr will hold the "fitness" of the current soluton 
-    #x_best will hold the best solution 
-    
+    #x_best will hold the best solution    
     
     #start with a random solution
     for i in xrange(0,n):
@@ -97,7 +92,6 @@ for r in xrange (0,restarts):
             x_curr.append(0)
         else:
             x_curr.append(1)
-            
         
     
     #begin local search overall logic
@@ -109,15 +103,9 @@ for r in xrange (0,restarts):
     f_best = f_curr
     w_best = evaluate(x_curr)[1]
         
-        
-    
-    #g = open('localSearchResults.csv','w')    #optional: to write results out to a file
-         
-        
-        
+             
     while done == 0:
-         
-        
+                
         Neighborhood = neighborhood(x_curr)   #create a list of all neighbors in the neighborhood of x_curr
         
         for s in Neighborhood:             #evaluate every member in the neighborhood of x_curr
@@ -135,12 +123,9 @@ for r in xrange (0,restarts):
             #print "Best solution: ", x_best        
             x_curr = x_best[:]         #else: move to the neighbor solution and continue
             f_curr = f_best            #evalute the current solution
-            #g.write('{},{}\n'.format(solutionsChecked, f_best))   #optional: to write out results to a file
         
-    total_iterations_all=total_iterations_all+solutionsChecked
     
     if f_best > best_restart_Objective:
-        #best_restart_iterations=solutionsChecked # not assigning the number of iterations even though i can see the solution  
         best_Objesctive_stoe.append(f_best) # keep track of best values
         best_restart_Objective = max( best_Objesctive_stoe)# best value produced during iterations
     print " \nFinal:Total number of solutions checked: ", solutionsChecked
@@ -152,10 +137,11 @@ for r in xrange (0,restarts):
     #print "Best solution: ", x_best
     #print "Number of items selected:", sum(x_best)
     
-    
-    #g.close() #optional: to close the external file with results    
 
-print "\nFinal:Best value found: ",best_restart_Objective
-#print "Total number of solutions checked in the best solution: ",best_restart_iterations # not outputing the number if iterations so some reason 
-print "Total solutions checked over all restarts",total_iterations_all
+
+print "\nFinal:Best value found: ",best_restart_Objective 
+print "Final:Total number of solutions checked: ", solutionsChecked
+#print "Total solutions checked over all restarts",total_iterations_all
+#print "Weight of knapsack: ", totalWeight
 print "Number of restarts",restarts
+
